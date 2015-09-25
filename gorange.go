@@ -3,16 +3,22 @@ package gorange
 import "fmt"
 
 func IntRange(first, last, step int) ([]int, error) {
-	var intRange []int
 	if last < first {
 		msg := "last value must be greater than or equal to a first value"
-		return intRange, fmt.Errorf(msg)
+		return nil, fmt.Errorf(msg)
 	}
+	sliceSize := 0
+	if step > last {
+		sliceSize = 1
+	} else {
+		sliceSize = last / step
+	}
+	intRange := make([]int, sliceSize)
 	value := first
 	stepFactor := 0
-	for value <= last {
+	for i := 0; value <= last; i++ {
 		stepFactor++
-		intRange = append(intRange, value)
+		intRange[i] = value
 		value = first + step*stepFactor
 	}
 	return intRange, nil
