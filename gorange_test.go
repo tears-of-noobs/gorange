@@ -15,4 +15,13 @@ func TestIntRange(t *testing.T) {
 	if !reflect.DeepEqual(resultSlice, validSlice) {
 		t.Errorf("Expected %v got %v\n", validSlice, resultSlice)
 	}
+
+	validSlice = []int{1}
+	resultSlice, err = IntRange(1, 100, 100)
+	if err != nil {
+		t.Error(err)
+	}
+	if !reflect.DeepEqual(resultSlice, validSlice) {
+		t.Errorf("Expected %v got %v\n", validSlice, resultSlice)
+	}
 }
