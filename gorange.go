@@ -11,7 +11,7 @@ func IntRange(first, last, step int) ([]int, error) {
 	if step > last {
 		sliceSize = 1
 	} else {
-		sliceSize = last / step
+		sliceSize = (last - first + 1) / step
 	}
 	intRange := make([]int, sliceSize)
 	value := first
